@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+<div class="text-center h1">Editar Fornecedor</div>
+<div class="container">
+
+    <a href="/view-suppliers">
+        <button type="button" class="btn btn-outline-primary">Voltar</button>
+    </a>
+
+    {% include '_messages.html' %}
+    {% from "_formhelpers.html" import render_field %}
+        <form method="post" enctype="multipart/form-data">
+            <div>
+                {{ render_field(form.name ,class="form-control") }}
+                {{ render_field(form.email ,class="form-control") }}
+                {{ render_field(form.address ,class="form-control") }}
+                {{ render_field(form.NIF ,class="form-control") }}
+
+            </div>
+
+            <p><input type="submit" value="Registar" class="btn btn-primary mt-2">
+        </form>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container p-3">
+    <h1 class="display-4 text-center mt-4 titulo">InForTech</h1>
+    <a href="/login-admin">
+        <button type="button" class="btn btn-outline-primary">Admin</button>
+    </a>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+
+                <div class="card-body">
+
+        <h5 class="card-title">Clientes</h5>
+        <p class="card-text">Espaço dedicado a clientes.</p>
+                    <a rel="stylesheet" href="/register" class="btn btn-primary">Registar</a>
+                    <a rel="stylesheet" href="/login" class="btn btn-primary">Log In</a>
+                    <a rel="stylesheet" href="/view-store" class="btn btn-primary">Ver loja</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+
+      <div class="card-body">
+        <h5 class="card-title">Fornecedores</h5>
+        <p class="card-text">Espaço dedicado a fornecedores.</p>
+          <a rel="stylesheet" href="/supplier-account" class="btn btn-primary">Registar</a>
+          <a rel="stylesheet" href="/supplier-account-login" class="btn btn-primary">Log In</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+{% endblock %}

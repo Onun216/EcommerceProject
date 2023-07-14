@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<div class="container">
+
+    <a href="/view-store">
+        <button type="button" class="btn btn-outline-primary">Voltar</button>
+    </a>
+
+  <div class="row">
+ {% for product in products %}
+
+      {% if product %}
+    <div class="col-md-3 mt-4">
+        <div class="card">
+            <div class="card-body">
+
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">€{{ product.price }}</p>
+                <p>Stock disponível: {{ product.stock }}</p>
+
+            </div>
+        </div>
+      </div>
+      {% endif %}
+{% endfor %}
+  </div>
+</div>
+
+
+
+
+{% endblock %}

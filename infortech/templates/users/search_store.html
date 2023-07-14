@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+{% include 'navbar.html' %}
+
+
+<div class="container-lg">
+  <div class="row">
+ {% for product in products %}
+
+      {% if product %}
+    <div class="col-md-3 mt-4">
+        <div class="card">
+            <div class="card-body">
+
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">€{{ product.price }}</p>
+                <p>Stock disponível: {{ product.stock }}</p>
+                <form action="{{ url_for('addToCart')}}" method="post">
+                    <input type="hidden" name="product_id" value="{{product.id}}">
+                    <button type="submit" class="btn btn-primary">Adicionar ao carrinho</button>
+                <p style="padding: 10px">
+                    <label for="">Quantidade</label>
+                    <input type="number" name="quantity" id="" value="1" min="1" max="{{product.stock}}">
+                </form>
+
+            </div>
+        </div>
+      </div>
+      {% endif %}
+{% endfor %}
+  </div>
+</div>
+
+
+
+
+{% endblock %}

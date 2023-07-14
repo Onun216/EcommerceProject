@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% include 'navbar.html' %}
+<div class="container mt-4">
+  {% include '_messages.html' %}
+  <div class="row">
+    <div class="col-md-12">
+      Recibo: {{orders.invoice}}
+      <br>
+        Cliente: {{customer.name}}
+      <br>
+      Email: {{customer.email}}
+      <br>
+        Morada: {{customer.address}}
+      <br>
+        NIF: {{customer.NIF}}
+      <br>
+        Data: {{orders.date_created.strftime('%Y-%m-%d')}}
+      <br>
+    <table class="table table-sm">
+      <thead>
+      <th>Produto</th>
+      <th>Quantidade</th>
+      <th>Preço</th>
+      <th>Subtotal</th>
+      <th></th>
+      <th></th>
+      </thead>
+
+    <tbody>
+    {% for key, product in orders.orders.items() %}
+    <tr>
+    <td>{{product.name}}</td>
+      <form action="{{url_for('update_cart', code=key)}}" method="post">
+        <td> {{product.quantity}}</td>
+        <td>€{{"%.2f"|format(product.price)}}</td>
+      {% set subTotal = product.quantity|int * product.price|float %}
+      <td>€{{"%0.2f"|format(subTotal|float)}}</td>
+      </form>
+
+    </tr>
+    {% endfor %}
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td colspan="4">
+        <b>Iva  : €{{"%0.2f"|format(IVA|float)}}</b>
+      </td>
+
+      <td colspan="5"><h4>Total pedido (c/ IVA) : €{{total}}</h4></td>
+
+      <td><form action="{{url_for('get_pdf', invoice=orders.invoice)}}" method="post">
+        <button type="submit" class="btn btn-primary">Get PDF</button>
+      </form></td>
+    </tr>
+    </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+{% endblock content %}
+

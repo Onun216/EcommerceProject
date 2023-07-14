@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1 class="display-4 text-center mt-4 titulo">Utilizadores</h1>
+
+<div class="container text-center">
+    <form class="form-inline my-2 my-lg-0" action="{{ url_for('users_result') }}">
+        <input class="form-control mr-sm-2" type="search" placeholder="Nome" aria-label="Search" name="q">
+        <button class="btn btn-primary " type="submit">Procurar</button>
+    </form>
+</div>
+
+<div class="container text-center">
+
+  <a href="/admin">
+        <button type="button" class="btn btn-outline-primary">Voltar</button>
+    </a>
+    {% include '_messages.html' %}
+    {% from "_formhelpers.html" import render_field %}
+
+  <table class="table">
+  <thead>
+      <th scope="col">Nome</th>
+      <th scope="col">Pedidos</th>
+      <th scope="col">Detalhes</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">NIF</th>
+  </thead>
+
+  <tbody>
+
+  {% for user in users %}
+
+  {% include 'admin/includes/user_detail.html' %}
+
+
+    <tr>
+      <td>{{user.name}}</td>
+
+        <td>
+         <a href="{{url_for('view_orders', id=user.id)}}" class="btn btn-outline-primary" tabindex="-1" role="button" >Ver</a>
+      </td>
+
+      <td>
+          <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#Modal-Detail-{{ user.id }}">
+                Ver
+          </button>
+      </td>
+
+      <td>{{user.email}}</td>
+      <td>{{user.NIF}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+</div>
+
+{% endblock content %}

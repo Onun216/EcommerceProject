@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% if plot_url %}
+<div class="container">
+
+    <a href="/supplier">
+        <button type="button" class="btn btn-outline-primary">Voltar</button>
+    </a>
+
+    <div class="card" style="width: 80rem;">
+  <img src= "/static/detail_sale_graph.png" alt="O gráfico não pode ser mostrado">
+  <div class="card-body">
+    <p class="card-text">*O gráfico foi mostrado com base na informação mais recente.
+    <table border="1px solid" cellpadding="10px">
+    <th>Produto</th>
+      <hr>
+    <th>Vendido a clientes</th>
+    <th>Vendido à InForTech</th>
+    {% for product in products %}
+        <tr>
+            <td class="text-center">{{product.name}}</td>
+            <td class="text-center">{{product.total_order - product.stock}}</td>
+            <td class="text-center">{{product.total_order}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+  </div>
+
+</div>
+
+
+</div>
+
+{% endif %}
+
+{% endblock %}
+

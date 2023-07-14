@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="text-center h1">Espaço Fornecedor</div>
+<div class="container">
+
+     <a href="/logout-supplier">
+        <button type="button" class="btn btn-outline-primary">Log out</button>
+    </a>
+    {% include '_messages.html' %}
+    {% from "_formhelpers.html" import render_field %}
+
+
+    <hr>
+
+    <div class="card">
+        <div class="card-body">
+        <h5 class="card-title">Vendas à InForTech</h5>
+        <p class="card-text">Gráfico corresponde ao número total de produtos que vendeu à InforTech.</p>
+        <a href="/sales" class="btn btn-primary">Ver gráfico</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="card">
+        <div class="card-body">
+        <h5 class="card-title">Vendas a clientes da Loja InForTech</h5>
+        <p class="card-text">Gráfico corresponde à comparação entre o número total de produtos que os clientes InForTech compraram e o número total de produtos que vendeu à InForTech.</p>
+        <a href="/sales-detail" class="btn btn-primary">Ver gráfico</a>
+        </div>
+    </div>
+
+    <hr>
+
+</div>
+
+
+{% endblock %}

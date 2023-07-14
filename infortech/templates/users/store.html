@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block content %}
+{% include 'navbar.html' %}
+
+
+<div class="container-lg mt-5">
+  <div class="row">
+
+{% if category %}
+{% for c in category %}
+
+      {% if c.stock > 0 %}
+    <div class="col-md-3 mt-4">
+  <div class="card">
+  <div class="card-body">
+
+    <h5 class="card-title">{{c.name}}</h5>
+    <p class="card-text">Preço: €{{c.price}}</p>
+    <a href="{{url_for('view_product', id=c.id)}}" class="btn btn-primary" role="button">Ver</a>
+  </div>
+  </div>
+
+    </div>
+      {% endif %}
+
+{% endfor %}
+
+
+      {% else %}
+
+ {% for product in products %}
+
+      {% if product.stock > 0 %}
+    <div class="col-md-3 mt-4">
+
+  <div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{product.name}}</h5>
+    <p class="card-text">Preço: €{{product.price}}</p>
+    <a href="{{url_for('view_product', id=product.id)}}" class="btn btn-primary" role="button">Ver</a>
+  </div>
+  </div>
+
+    </div>
+      {% endif %}
+
+{% endfor %}
+      {% endif %}
+  </div>
+</div>
+
+
+
+
+{% endblock %}

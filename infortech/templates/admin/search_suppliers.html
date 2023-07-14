@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1 class="display-4 text-center mt-4 titulo">Fornecedores</h1>
+
+
+<div class="container text-center">
+
+    <a href="/view-suppliers">
+        <button type="button" class="btn btn-outline-primary">Voltar</button>
+    </a>
+    {% include '_messages.html' %}
+    {% from "_formhelpers.html" import render_field %}
+
+  <table class="table">
+  <thead>
+      <th scope="col">Nome</th>
+      <th scope="col">Detalhes</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">NIF</th>
+  </thead>
+
+  <tbody>
+
+  {% for supplier in suppliers %}
+
+  {% include 'admin/includes/supplier_detail.html' %}
+
+
+    <tr>
+      <td>{{supplier.name}}</td>
+
+      <td>
+          <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#Modal-Detail-{{ supplier.id }}">
+                Ver
+          </button>
+      </td>
+
+      <td>{{supplier.email}}</td>
+      <td>{{supplier.NIF}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+</div>
+
+{% endblock content %}

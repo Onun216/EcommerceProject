@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="text-center h1">Admin Login</div>
+<div class="container">
+     <a href="/">
+        <button type="button" class="btn btn-outline-primary">Voltar</button>
+    </a>
+    {% include '_messages.html' %}
+    {% from "_formhelpers.html" import render_field %}
+        <form method="post" enctype="multipart/form-data">
+            <div>
+                {{ render_field(form.username ,class="form-control") }}
+                {{ render_field(form.password ,class="form-control") }}
+            </div>
+
+            <p><input type="submit" value="Login" class="btn btn-primary mt-2">
+        </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% if plot_url %}
+<div class="container">
+
+    <a href="/sales-graphs">
+        <button type="button" class="btn btn-outline-primary">Voltar</button>
+    </a>
+
+    <div class="card" style="width: 80rem;">
+  <img src= "/static/admin_graph.png" alt="O gráfico não pode ser mostrado">
+  <div class="card-body">
+    <p class="card-text">*O gráfico foi mostrado com base na informação mais recente.
+
+    <table border="1px solid" cellpadding="10px">
+
+    <th>Produto</th>
+      <hr>
+    <th>Vendido a clientes</th>
+    <th>Encomendado pela InForTech</th>
+    <th>Lucro bruto (€)</th>
+    <th>Custo total da encomenda (€)</th>
+
+      {% for product in products %}
+      {% set gross_profit = product.price|float - product.price_paid|float %}
+      {% set show_profit = product.total_order|int - product.stock|int %}
+      {% set gross_expense = product.total_order|int * product.price_paid|float %}
+        <tr>
+            <td class="text-center">{{product.name}}</td>
+            <td class="text-center">{{product.total_order - product.stock}}</td>
+            <td class="text-center">{{product.total_order}}</td>
+            {% if show_profit > 0 %}
+            <td class="text-center">{{"%0.2f"|format(gross_profit|float)}}</td>
+            <td class="text-center">{{"%0.2f"|format(gross_expense)}}</td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+    </table>
+  </div>
+
+</div>
+
+
+</div>
+
+{% endif %}
+
+{% endblock %}
+

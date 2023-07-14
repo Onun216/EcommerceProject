@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="text-center h1">Criar Fornecedor</div>
+<div class="container">
+    <a href="/">
+        <button type="button" class="btn btn-outline-primary">Voltar</button>
+    </a>
+    {% include '_messages.html' %}
+    {% from "_formhelpers.html" import render_field %}
+        <form method="post" enctype="multipart/form-data">
+            <div>
+                {{ render_field(form.username ,class="form-control") }}
+                {{ render_field(form.password ,class="form-control") }}
+                {{ render_field(form.confirm ,class="form-control") }}
+            </div>
+
+            <p><input type="submit" value="Criar conta" class="btn btn-primary mt-2">
+        </form>
+</div>
+
+{% endblock content %}

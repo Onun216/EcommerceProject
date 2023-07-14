@@ -1,0 +1,35 @@
+<style>
+  .modal-content {
+    background-color: white
+  }
+</style>
+
+
+<div class="modal fade" id="Modal-Detail-{{ product.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Fornecedor</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {% if product %}
+      <div class="modal-body">
+
+        <h5>{{ product.supplier.name }}</h5>
+        <h5>{{ product.supplier.email }}</h5>
+        <h5>Morada: {{ product.supplier.address }}</h5>
+        <h5>NIF: {{ product.supplier.NIF }}</h5>
+
+      </div>
+    {% endif %}
+      <div class="modal-footer">
+
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,42 @@
+body {
+    background: #abbaab;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffffff, #abbaab);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffffff, #abbaab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.titulo {
+       font-family: 'Inconsolata', monospace;
+}
+
+a button {
+    position:absolute;
+    top:0;
+    right:0;
+    padding: 15px;
+    margin: 10px;
+}
+
+
+
+div a button {
+    position:absolute;
+    top:50px;
+    right:0;
+    padding: 15px;
+    margin: 10px;
+}
+
+
+.container {
+    padding:50px
+}
+
+div ul {
+    position:absolute;
+    top:500;
+    right:500;
+    left:500;
+    margin:0px;
+    padding:65px
+}
+

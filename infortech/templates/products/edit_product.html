@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+<div class="text-center h1">Editar produto</div>
+<div class="container">
+
+    <a href="/warehouse">
+        <button type="button" class="btn btn-outline-primary">Voltar</button>
+    </a>
+
+    {% include '_messages.html' %}
+    {% from "_formhelpers.html" import render_field %}
+        <form method="post" enctype="multipart/form-data">
+            <div>
+                {{ render_field(form.name ,class="form-control") }}
+                {{ render_field(form.max_stock ,class="form-control") }}
+                {{ render_field(form.stock ,class="form-control") }}
+                {{ render_field(form.sector ,class="form-control") }}
+
+                <br>
+                <select name="supplier" id="supplier" class="form-control" required>
+                    <option value="">Fornecedor</option>
+                     {% for supplier in suppliers %}
+                    <option value="{{supplier.id}}"> {{supplier.name}}</option>
+                    {% endfor %}
+                </select>
+                <br>
+
+                <br>
+                <select name="category" id="category" class="form-control" required>
+                    <option value="">Categoria</option>
+                     {% for category in categories %}
+                    <option value="{{category.id}}"> {{category.name}}</option>
+                    {% endfor %}
+                </select>
+                <br>
+
+                {{ render_field(form.supplier_discount ,class="form-control") }}
+                {{ render_field(form.base_price ,class="form-control") }}
+                {{ render_field(form.product_IVA ,class="form-control") }}
+                {{ render_field(form.total_order ,class="form-control") }}
+
+            </div>
+
+            <p><input type="submit" value="Registar" class="btn btn-primary mt-2">
+        </form>
+</div>
+
+{% endblock content %}

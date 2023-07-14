@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container p-4">
+    <h1 class="display-4 text-center mt-4 titulo">Admin</h1>
+
+    <a href="/logout-admin">
+        <button type="button" class="btn btn-outline-primary">Logout</button>
+    </a>
+
+<div>
+
+</div>
+  <p></p>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+
+         <h5 class="card-title">Compra de produtos</h5>
+        <p class="card-text"></p>
+                    <a rel="stylesheet" href="/register-product" class="btn btn-primary">Registar produtos</a>
+                    <a rel="stylesheet" href="/add-category" class="btn btn-primary">Adicionar categoria</a>
+
+
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+
+      <div class="card-body">
+
+        <h5 class="card-title">Armazém</h5>
+        <p class="card-text"></p>
+          <a rel="stylesheet" href="/warehouse" class="btn btn-primary">Ver stock</a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div></div>
+  <p></p>
+
+   <div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+
+      <div class="card-body">
+        <h5 class="card-title">Clientes</h5>
+        <p class="card-text"></p>
+          <a rel="stylesheet" href="/view-users" class="btn btn-primary">Ver</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="card">
+
+      <div class="card-body">
+        <h5 class="card-title">Fornecedores</h5>
+        <p class="card-text"></p>
+          <a rel="stylesheet" href="/view-suppliers" class="btn btn-primary">Ver</a>
+          <a rel="stylesheet" href="/register-supplier" class="btn btn-primary">Registar fornecedores</a>
+          <a rel="stylesheet" href="/sales-graphs" class="btn btn-primary">Ver gráficos de vendas</a>
+      </div>
+    </div>
+  </div>
+   </div>
+
+
+</div>
+
+{% for product in products %}
+{% if product.stock|int <= (product.max_stock|int - (product.max_stock|int * 0.9)) %}
+<div class="container">
+<div class="alert alert-danger" role="alert">
+Alerta! O stock de alguns produtos merece a sua atenção!
+</div>
+</div>
+{% endif %}
+{% endfor %}
+
+
+
+{% endblock %}
