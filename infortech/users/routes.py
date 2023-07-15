@@ -62,6 +62,10 @@ def edit_user_account(id):
         db.session.commit()
         return redirect(url_for('order_history', id=current_user.id))
 
+    form.name.data = user.name
+    form.address.data = user.address
+    form.NIF.data = user.NIF
+    form.email.data = user.email
     form.password.data = user.password
 
     return render_template('users/edit_user_account.html', form=form, user=user)

@@ -48,6 +48,11 @@ class Product(db.Model):
         self.total_order += quantity
         db.session.commit()
 
+    def grossProfit(self):
+        result = self.price - self.price_paid
+        gross_p = result * (self.total_order - self.stock)
+        return gross_p
+
 
 class Supplier(db.Model):
     id = db.Column(db.Integer, primary_key=True)

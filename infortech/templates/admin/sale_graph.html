@@ -24,7 +24,7 @@
     <th>Custo total da encomenda (€)</th>
 
       {% for product in products %}
-      {% set gross_profit = product.price|float - product.price_paid|float %}
+      {% set gross_profit = (product.price|float - product.price_paid|float) * (product.total_order|int - product.stock|int)  %}
       {% set show_profit = product.total_order|int - product.stock|int %}
       {% set gross_expense = product.total_order|int * product.price_paid|float %}
         <tr>

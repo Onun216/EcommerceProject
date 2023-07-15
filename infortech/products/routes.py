@@ -47,6 +47,11 @@ def edit_supplier(id):
         db.session.commit()
         return redirect(url_for('view_suppliers'))
 
+    form.name.data = supplier.name
+    form.email.data = supplier.email
+    form.address.data = supplier.address
+    form.NIF.data = supplier.NIF
+
     return render_template('products/edit_supplier.html', form=form, supplier=supplier)
 
 
@@ -173,15 +178,15 @@ def edit_product(id):
         db.session.commit()
         return redirect(url_for('warehouse'))
 
-    # form.name.data = product.name
-    # form.max_stock.data = product.max_stock
-    # form.stock.data = product.stock
-    # form.sector.data = product.sector
-    # form.supplier_discount.data = product.supplier_discount
-    # form.base_price.data = product.base_price
-    # form.product_IVA.data = product.product_IVA
-    # product.total_order.data = product.total_order
-    # category = product.category.name
+    form.name.data = product.name
+    form.max_stock.data = product.max_stock
+    form.stock.data = product.stock
+    form.sector.data = product.sector
+    form.supplier_discount.data = product.supplier_discount
+    form.base_price.data = product.base_price
+    form.product_IVA.data = product.product_IVA
+    form.total_order.data = product.total_order
+    category = product.category.name
 
     return render_template('products/edit_product.html', form=form, suppliers=suppliers,
                            categories=categories, product=product)
